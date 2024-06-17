@@ -5,6 +5,7 @@
 # Input: num_list = [3, 4, 5, 1, -44 , 5 ,10, 12 ,33, 1] với k=3
 # Output: [5, 5, 5, 5, 10, 12, 33,
 
+import unicodedata
 num_list = [3, 4, 5, 1, -44, 5, 10, 12, 33, 1]
 
 
@@ -38,3 +39,27 @@ def count_char(word):
 
 
 print(count_char('Hello, world'))
+
+
+# Viết function đọc các câu trong một file txt, đếm số lượng các từ xuất hiện và trả về một dictionary
+# với key là từ và value là số lần từ đó xuất hiện.
+# a_file = open('F:\New folder\DEMO GIT\AIO-Exercise\P1_data.txt')
+with open('AIO-Exercise\P1_data.txt', mode='r', encoding="utf-8") as f:
+    content = f.read()
+    f.close()
+
+
+def count_words(content):
+    content = content.lower()
+    content = content.split()
+    # return content
+    dict_word = {}
+    for word in content:
+        if word in dict_word:
+            dict_word[word] += 1
+        else:
+            dict_word[word] = 1
+    return dict_word
+
+
+print(count_words(content))
